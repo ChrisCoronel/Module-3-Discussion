@@ -1,0 +1,51 @@
+using System;
+
+namespace Module3Assignment
+{
+    // A simple Stock class based on Classes.txt
+    class Stock
+    {
+        // Properties to hold stock details
+        public string Name { get; set; }
+        public double Price { get; set; }
+        public int Shares { get; set; }
+
+        // A read-only property that calculates total value
+        public double TotalValue
+        {
+            get
+            {
+                return Price * Shares;
+            }
+        }
+
+        // Constructor to set initial values when creating a stock object
+        public Stock(string stockName, double stockPrice, int totalShares)
+        {
+            Name = stockName;
+            Price = stockPrice;
+            Shares = totalShares;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create a new Stock object (instance of the class)
+            Stock myStock = new Stock("Apple", 150.00, 10);
+
+            Console.WriteLine("--- Before Price Increase ---");
+            Console.WriteLine("Stock Name: " + myStock.Name);
+            Console.WriteLine("Price per Share: $" + myStock.Price);
+            Console.WriteLine("Total Portfolio Value: $" + myStock.TotalValue);
+
+            // Change the price
+            myStock.Price = 175.50;
+
+            Console.WriteLine("\n--- After Price Increase ---");
+            Console.WriteLine("New Price per Share: $" + myStock.Price);
+            Console.WriteLine("New Total Portfolio Value: $" + myStock.TotalValue);
+        }
+    }
+}
